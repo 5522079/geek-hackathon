@@ -18,7 +18,7 @@ class Game:
 
 
 
-  def run(self):
+def run(self):
     playerBird = player.PlayerBird(100, 100)
     pipe = obstacle.Obstacle(600, -100)
     fps = pygame.time.Clock()
@@ -34,6 +34,16 @@ class Game:
       playerBird.update()
       pipe.update()
 
+
+      if playerBird.collides_with(pipe):
+        print('Game Over')
+
+      # イベント処理
+      for event in pygame.event.get():
+        # 終了イベント
+        if event.type == pygame.QUIT:
+          self.running = False
+>
 
             # イベント処理
             for event in pygame.event.get():
