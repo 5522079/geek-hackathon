@@ -1,10 +1,14 @@
 import pygame
-from settings import WIDTH, HEIGHT
+
+# 定数
+WIDTH = 600
+HEIGHT = 800
 
 class Ground:
     """地面のクラス"""
     def __init__(self):
         self.image = pygame.image.load('sprites/base.png').convert()  # 地面の画像を読み込む
+        self.image = pygame.transform.scale(self.image, (WIDTH, 100))  # 地面の画像をウィンドウ幅にスケーリング
         self.rect = self.image.get_rect(bottomleft=(0, HEIGHT))  # 画像の位置を設定
 
     def draw(self, screen):
@@ -15,7 +19,9 @@ class Background:
     """背景を管理するクラス"""
     def __init__(self):
         self.day_image = pygame.image.load('sprites/background-day.png').convert()  # 昼の背景画像を読み込む
+        self.day_image = pygame.transform.scale(self.day_image, (WIDTH, HEIGHT))  # 昼の背景画像をウィンドウサイズにスケーリング
         self.night_image = pygame.image.load('sprites/background-night.png').convert()  # 夜の背景画像を読み込む
+        self.night_image = pygame.transform.scale(self.night_image, (WIDTH, HEIGHT))  # 夜の背景画像をウィンドウサイズにスケーリング
         self.current_image = self.day_image  # 最初は昼の背景を表示
         self.ground = Ground()  # 地面を作成
         self.change_interval = 30000  # 30秒ごとに背景を切り替え
