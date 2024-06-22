@@ -28,7 +28,6 @@ class Item:
 
     # アイテムリセット
     if self.rect.right < -0 and self.rare:
-      print("reset")
       self.rect.x = 600 + randint(100, 600)
       self.rect.y = randint(100, 600)
       self.x = self.rect.x

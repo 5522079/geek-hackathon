@@ -56,7 +56,7 @@ class PlayerBird:
   def collides_with_ground(self, ground: Ground):
     return self.rect.colliderect(ground.rect)
   
-  def collides_with_fish(self, item: Item):
+  def collides_with_item(self, item: Item):
     return self.rect.colliderect(item.rect)
 
   def draw(self, screen):

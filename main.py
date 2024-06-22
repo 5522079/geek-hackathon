@@ -24,7 +24,7 @@ class Game:
 
     playerBird = PlayerBird(100, 250)
     pipe = Obstacle(600, -100)
-    item = Item()
+    rare_item = Item()
     background = Background()
     ground = Ground()
     fps = pygame.time.Clock()
@@ -42,13 +42,30 @@ class Game:
         pipe.update()
         background.update()
         ground.update()
-        item.update()
+        rare_item.update()
 
-        if not item.is_hide():
-          if (not pipe.hide_top and item.collide_rect(pipe.top_rect)) or (not pipe.hide_top2 and item.collide_rect(pipe.top2_rect)):
-            item.hide()
-          if item.collide_rect(pipe.bottom_rect) or item.collide_rect(pipe.bottom2_rect):
-            item.hide()
+        #レアアイテムの当たり判定
+        if not rare_item.is_hide():
+          # パイプとの当たり判定でアイテムを消す
+          if (not pipe.hide_top and rare_item.collide_rect(pipe.top_rect)) or (not pipe.hide_top2 and rare_item.collide_rect(pipe.top2_rect)):
+            rare_item.hide()
+          if rare_item.collide_rect(pipe.bottom_rect) or rare_item.collide_rect(pipe.bottom2_rect):
+            rare_item.hide()
+
+          # プレイヤーの判定
+          if playerBird.collides_with_item(rare_item):
+            gameMaster.add_score(rare_item.get_point())
+            rare_item.hide()
+        # パイプのアイテム
+        if not pipe.item1.is_hide():
+          if playerBird.collides_with_item(pipe.item1):
+            gameMaster.add_score(pipe.item1.get_point())
+            pipe.item1.hide()
+        if not pipe.item2.is_hide():
+          if playerBird.collides_with_item(pipe.item2):
+            gameMaster.add_score(pipe.item2.get_point())
+            pipe.item2.hide()
+        
 
       # ゲームオーバー判定
       if playerBird.collides_with_pip(pipe) or playerBird.collides_with_ground(ground):
@@ -75,7 +92,7 @@ class Game:
       # 表示順番重要なので変えないように注意
       background.draw(self.screen)
       playerBird.draw(self.screen)
-      item.draw(self.screen)
+      rare_item.draw(self.screen)
       pipe.draw(self.screen)
       ground.draw(self.screen)
       gameMaster.draw(self.screen)
