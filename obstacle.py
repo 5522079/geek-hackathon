@@ -79,3 +79,5 @@ class Obstacle:
             self.bottom2_rect.top = self.top2_rect.top + self.top2.get_height() + gap_y
 
             self.hide_top2 = randint(1, 10) <= 3
+
+
