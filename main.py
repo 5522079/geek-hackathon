@@ -28,6 +28,7 @@ class Game:
       playerBird.update()
       pipe.update()
       background.update()
+      ground.update()
 
       if playerBird.collides_with(pipe):
         print('Game Over')

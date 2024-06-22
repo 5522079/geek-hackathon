@@ -11,6 +11,10 @@ class Ground:
         self.image = pygame.transform.scale(self.image, (WIDTH, 100))  # 地面の画像をウィンドウ幅にスケーリング
         self.rect = self.image.get_rect(bottomleft=(0, HEIGHT))  # 画像の位置を設定
 
+    def update(self):
+        """地面の更新"""
+        self.rect.move_ip(-1, 0)
+
     def draw(self, screen):
         """地面を描画する"""
         screen.blit(self.image, self.rect.topleft)  # 画像を描画
