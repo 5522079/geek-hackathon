@@ -7,3 +7,5 @@ python -m pip install pygame
 # 動かし方
 
 作るの待って
+
+#　こんにちは
