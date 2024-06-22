@@ -30,7 +30,7 @@ class Game:
     fps = pygame.time.Clock()
 
     retry = False
-
+    
     while self.running:
       #メイン処理
       self.screen.fill((0, 0, 0))
@@ -89,6 +89,8 @@ class Game:
               gameMaster.retry()
               self.running = False
               retry = True
+            
+            background.reset()
 
       # 描画処理
       # 表示順番重要なので変えないように注意
