@@ -43,7 +43,12 @@ class Game:
         background.update()
         ground.update()
         item.update()
-      
+
+        if not item.is_hide():
+          if (not pipe.hide_top and item.collide_rect(pipe.top_rect)) or (not pipe.hide_top2 and item.collide_rect(pipe.top2_rect)):
+            item.hide()
+          if item.collide_rect(pipe.bottom_rect) or item.collide_rect(pipe.bottom2_rect):
+            item.hide()
 
       # ゲームオーバー判定
       if playerBird.collides_with_pip(pipe) or playerBird.collides_with_ground(ground):
