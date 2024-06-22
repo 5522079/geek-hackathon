@@ -30,7 +30,7 @@ class Game:
       background.update()
       ground.update()
 
-      if playerBird.collides_with(pipe):
+      if playerBird.collides_with_pip(pipe):
         print('Game Over')
 
       # イベント処理

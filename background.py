@@ -13,7 +13,7 @@ class Ground:
 
     def update(self):
         """地面の更新"""
-        self.rect.move_ip(-1, 0)
+        # self.rect.move_ip(-1, 0)
 
     def draw(self, screen):
         """地面を描画する"""
