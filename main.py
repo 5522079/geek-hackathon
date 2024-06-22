@@ -1,6 +1,8 @@
 import pygame
 import player
-from background import Background  # 追加
+
+import obstacle
+
 
 # 定数
 WIDTH = 600
@@ -14,16 +16,24 @@ class Game:
         self.running = True
         self.background = Background()  # 追加: 背景の初期化
 
-    def run(self):
-        playerBird = player.PlayerBird(100, 100)
-        fps = pygame.time.Clock()
+
+
+  def run(self):
+    playerBird = player.PlayerBird(100, 100)
+    pipe = obstacle.Obstacle(600, -100)
+    fps = pygame.time.Clock()
+
 
         while self.running:
             # メイン処理
             self.background.update()  # 追加: 背景の更新
             self.screen.fill((0, 0, 0))
 
-            playerBird.update()
+
+
+      playerBird.update()
+      pipe.update()
+
 
             # イベント処理
             for event in pygame.event.get():
@@ -34,9 +44,11 @@ class Game:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     playerBird.jump()
 
-            # 描画処理
-            self.background.draw(self.screen)  # 追加: 背景の描画
-            playerBird.draw(self.screen)
+
+      # 描画処理
+      playerBird.draw(self.screen)
+      pipe.draw(self.screen)
+
 
             # 画面更新
             pygame.display.update()
