@@ -1,6 +1,7 @@
 import pygame
 from random import randint, random
 from settings import SCROLL_SPEED
+from item import Item
 
 # どかんのサイズ調整
 (width, height) = (88, 542)
@@ -72,7 +73,7 @@ class Obstacle:
 
             # 上が聞いているときは、高くする
             if self.hide_top:
-                self.top_rect.top = randint(-500, -150)
+                self.top_rect.top = randint(-400, -200)
             else:
                 self.top_rect.top = randint(-300, -150)
             self.bottom_rect.left = self.top_rect.left
@@ -85,7 +86,7 @@ class Obstacle:
 
             # 上が聞いているときは、高くする
             if self.hide_top2:
-                self.top2_rect.top = randint(-350, -150)
+                self.top2_rect.top = randint(-350, -200)
             else:
                 self.top2_rect.top = randint(-200, 0)
 
