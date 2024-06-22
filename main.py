@@ -9,6 +9,7 @@ class Game:
 
   def run(self):
     player1 = player.Player(100, 100)
+    fps = pygame.time.Clock()
 
     while self.running:
       for event in pygame.event.get():
@@ -19,6 +20,7 @@ class Game:
       player1.gravity()
       player1.draw(self.screen)
       pygame.display.update()
+      fps.tick(60)
 
     pygame.quit()
 
