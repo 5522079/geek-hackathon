@@ -1,6 +1,6 @@
 import pygame
-from random import randint, random
-from settings import SCROLL_SPEED, PIPE_GAP_X, PIPE_GAP_Y
+from random import randint
+from settings import SCROLL_SPEED, PIPE_GAP_X
 
 # 土管用アイテムも混じっているので気を付けてください
 class Item:
@@ -14,11 +14,11 @@ class Item:
     self.b_hide = False
     self.rare = not pipe_item #パイプ用のアイテムではない場合はレア
 
-    if not pipe_item:
-      self.img = pygame.image.load('sprites/fish.png').convert()  
+    if pipe_item:
+      self.img = pygame.image.load('sprites/low_point_item.png').convert_alpha()
     else:
       self.img = pygame.image.load('sprites/fish.png').convert()  
-    self.img = pygame.transform.scale(self.img, (50, 50))
+    self.img = pygame.transform.scale(self.img, (70, 50))
     self.rect = self.img.get_rect(topleft=(self.x, self.y))
 
   def update(self):

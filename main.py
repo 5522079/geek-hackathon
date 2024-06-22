@@ -51,6 +51,8 @@ class Game:
             rare_item.hide()
           if rare_item.collide_rect(pipe.bottom_rect) or rare_item.collide_rect(pipe.bottom2_rect):
             rare_item.hide()
+          if (not pipe.item1.is_hide() and rare_item.collide_rect(pipe.item1.rect)) or (not pipe.item2.is_hide() and rare_item.collide_rect(pipe.item2.rect)):
+            rare_item.hide()
 
           # プレイヤーの判定
           if playerBird.collides_with_item(rare_item):
