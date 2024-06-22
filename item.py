@@ -16,9 +16,10 @@ class Item:
 
     if pipe_item:
       self.img = pygame.image.load('sprites/low_point_item.png').convert_alpha()
+      self.img = pygame.transform.scale(self.img, (70, 50))
     else:
-      self.img = pygame.image.load('sprites/fish.png').convert()  
-    self.img = pygame.transform.scale(self.img, (70, 50))
+      self.img = pygame.image.load('sprites/star_1.png').convert_alpha()
+      self.img = pygame.transform.scale(self.img, (50, 50))
     self.rect = self.img.get_rect(topleft=(self.x, self.y))
 
   def update(self):
