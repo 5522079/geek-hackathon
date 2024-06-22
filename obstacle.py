@@ -1,5 +1,6 @@
 import pygame
 from random import randint, random
+from settings import SCROLL_SPEED
 
 # どかんのサイズ調整
 (width, height) = (88, 542)
@@ -8,7 +9,7 @@ gap_x = 350  # 左のどかんと右のどかんの幅
 gap_y = 150  # 上のどかんと下のどかんの幅
 
 # どかんが流れる速度
-scroll_speed = -8
+scroll_speed = SCROLL_SPEED
 
 class Obstacle:
     def __init__(self, x, y):
@@ -65,19 +66,30 @@ class Obstacle:
         self.bottom_x2 = self.bottom2_rect.x
 
         if self.top_rect.right < 0:
+            self.hide_top = randint(1, 10) <= 3
+
             self.top_rect.left = 600
-            self.top_rect.top = randint(-400, -150)
+
+            # 上が聞いているときは、高くする
+            if self.hide_top:
+                self.top_rect.top = randint(-500, -150)
+            else:
+                self.top_rect.top = randint(-300, -150)
             self.bottom_rect.left = self.top_rect.left
             self.bottom_rect.top = self.top_rect.top + self.top.get_height() + gap_y
 
-            self.hide_top = randint(1, 10) <= 3
-
         if self.top2_rect.right < 0:
+            self.hide_top2 = randint(1, 10) <= 3
+
             self.top2_rect.left = 600
-            self.top2_rect.top = randint(-200, 0)
+
+            # 上が聞いているときは、高くする
+            if self.hide_top2:
+                self.top2_rect.top = randint(-350, -150)
+            else:
+                self.top2_rect.top = randint(-200, 0)
+
             self.bottom2_rect.left = self.top2_rect.left
             self.bottom2_rect.top = self.top2_rect.top + self.top2.get_height() + gap_y
-
-            self.hide_top2 = randint(1, 10) <= 3
 
 
