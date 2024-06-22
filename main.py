@@ -13,14 +13,14 @@ class Game:
     self.running = True
 
   def run(self):
-    player1 = player.Player(100, 100)
+    playerBird = player.PlayerBird(100, 100)
     fps = pygame.time.Clock()
 
     while self.running:
       #メイン処理
       self.screen.fill((0, 0, 0))
 
-      player1.gravity()
+      playerBird.update()
 
       # イベント処理
       for event in pygame.event.get():
@@ -29,10 +29,10 @@ class Game:
           self.running = False
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-          player1.jump()
+          playerBird.jump()
 
       # 描画処理
-      player1.draw(self.screen)
+      playerBird.draw(self.screen)
 
       # 画面更新
       pygame.display.update()
