@@ -15,14 +15,19 @@ class Game:
     self.screen = pygame.display.set_mode((WITH, HEIGHT))
     self.running = True
 
-  def run(self):
+  # ゲームのメイン処理
+  # メインループ
+  # リトライなし -> False
+  def main_loop(self) -> bool:
     gameMaster = GameMaster()
 
-    playerBird = PlayerBird(100, 100)
+    playerBird = PlayerBird(100, 250)
     pipe = Obstacle(600, -100)
     background = Background()
     ground = Ground()
     fps = pygame.time.Clock()
+
+    retry = False
 
     while self.running:
       #メイン処理
@@ -30,7 +35,7 @@ class Game:
 
       # スタート後の処理
       # スタート前で処理させないためにif文で囲む
-      if gameMaster.b_started:
+      if gameMaster.is_started() and not gameMaster.is_game_over():
         playerBird.update()
         pipe.update()
         background.update()
@@ -38,8 +43,8 @@ class Game:
       
 
       # ゲームオーバー判定
-      if playerBird.collides_with_pip(pipe):
-        print('Game Over')
+      if playerBird.collides_with_pip(pipe) or playerBird.collides_with_ground(ground):
+        gameMaster.game_over()
 
       # イベント処理
       for event in pygame.event.get():
@@ -51,7 +56,12 @@ class Game:
             playerBird.jump()
 
         if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-            gameMaster.start()
+            if not gameMaster.is_started():
+              gameMaster.start()
+            elif gameMaster.is_game_over():
+              gameMaster.retry()
+              self.running = False
+              retry = True
 
       # 描画処理
       # 表示順番重要なので変えないように注意
@@ -65,7 +75,16 @@ class Game:
       pygame.display.update()
       fps.tick(45)
 
-    # 終了処理
+    return retry
+  
+  # ゲームの実行
+  def run(self):
+    while True:
+      retry = self.main_loop()
+      if not retry:
+        break
+      self.running = True
+
     pygame.quit()
 
 if __name__ == '__main__':
