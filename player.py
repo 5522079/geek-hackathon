@@ -73,7 +73,7 @@ class PlayerBird:
       draw_cat_img = self.cat2
 
     # デバッグ用の当たり判定描画
-    pygame.draw.rect(screen, (255, 0, 0), self.rect)
+    # pygame.draw.rect(screen, (255, 0, 0), self.rect)
 
     draw_bird = pygame.transform.rotate(draw_cat_img, self.angle)
 
