@@ -23,7 +23,6 @@ class Background:
         self.night_image = pygame.image.load('sprites/background-night.png').convert()  # 夜の背景画像を読み込む
         self.night_image = pygame.transform.scale(self.night_image, (WIDTH, HEIGHT))  # 夜の背景画像をウィンドウサイズにスケーリング
         self.current_image = self.day_image  # 最初は昼の背景を表示
-        self.ground = Ground()  # 地面を作成
         self.change_interval = 30000  # 30秒ごとに背景を切り替え
         self.last_change_time = pygame.time.get_ticks()  # 最後に背景を切り替えた時間を記録
 
@@ -38,4 +37,3 @@ class Background:
     def draw(self, screen):
         """背景を描画する"""
         screen.blit(self.current_image, (0, 0))  # 現在の背景画像を描画
-        self.ground.draw(screen)  # 地面を描画

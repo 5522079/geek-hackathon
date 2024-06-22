@@ -1,7 +1,7 @@
 import pygame
-import player
-import obstacle
-import background as bg
+from player import PlayerBird
+from obstacle import Obstacle
+from background import Background, Ground
 
 # 定数
 WITH = 600
@@ -15,9 +15,10 @@ class Game:
     self.running = True
 
   def run(self):
-    playerBird = player.PlayerBird(100, 100)
-    pipe = obstacle.Obstacle(600, -100)
-    background = bg.Background()
+    playerBird = PlayerBird(100, 100)
+    pipe = Obstacle(600, -100)
+    background = Background()
+    ground = Ground()
     fps = pygame.time.Clock()
 
     while self.running:
@@ -41,9 +42,11 @@ class Game:
           playerBird.jump()
 
       # 描画処理
+      # 表示順番重要なので変えないように注意
       background.draw(self.screen)
       playerBird.draw(self.screen)
       pipe.draw(self.screen)
+      ground.draw(self.screen)
 
       # 画面更新
       pygame.display.update()
