@@ -17,28 +17,28 @@ class Obstacle:
         # どかん1
         self.top_x = x
         self.top_y = y
-        self.top = pygame.image.load("sprites/pipe-green.png").convert_alpha()
+        self.top = pygame.image.load("sprites/sand.png").convert_alpha()
         self.top = pygame.transform.rotate(self.top, 180)
         self.top = pygame.transform.scale(self.top, (width, height))
         self.top_rect = self.top.get_rect(topleft=(self.top_x, self.top_y))
 
         self.bottom_x = x
         self.bottom_y = self.top_y + self.top.get_height() + gap_y
-        self.bottom = pygame.image.load("sprites/pipe-green.png").convert_alpha()
+        self.bottom = pygame.image.load("sprites/cactus.png").convert_alpha()
         self.bottom = pygame.transform.scale(self.bottom, (width, height))
         self.bottom_rect = self.bottom.get_rect(topleft=(self.bottom_x, self.bottom_y))
 
         # どかん2
         self.top_x2 = x + gap_x
         self.top_y2 = y - 50
-        self.top2 = pygame.image.load("sprites/pipe-green.png").convert_alpha()
+        self.top2 = pygame.image.load("sprites/sand.png").convert_alpha()
         self.top2 = pygame.transform.rotate(self.top2, 180)
         self.top2 = pygame.transform.scale(self.top2, (width, height))
         self.top2_rect = self.top2.get_rect(topleft=(self.top_x2, self.top_y2))
         
         self.bottom_x2 = x + gap_x
         self.bottom_y2 = self.top_y2 + self.top2.get_height() + gap_y
-        self.bottom2 = pygame.image.load("sprites/pipe-green.png").convert_alpha()
+        self.bottom2 = pygame.image.load("sprites/cactus.png").convert_alpha()
         self.bottom2 = pygame.transform.scale(self.bottom2, (width, height))
         self.bottom2_rect = self.bottom2.get_rect(topleft=(self.bottom_x2, self.bottom_y2))
 
