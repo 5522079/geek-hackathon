@@ -1,4 +1,5 @@
 import pygame
+import obstacle
 
 SCALE = 1.5
 MOVE_SPEED = 7
@@ -14,14 +15,14 @@ class PlayerBird:
     self.flameCount = 0
 
     # 画像の読み込み
-    self.midimg = pygame.image.load('sprites/yellowbird-midflap.png')
+    self.midimg = pygame.image.load('sprites/yellowbird-midflap.png').convert_alpha()
     self.midimg = pygame.transform.rotozoom(self.midimg, 0, SCALE)
-    self.downimg = pygame.image.load('sprites/yellowbird-downflap.png')
+    self.downimg = pygame.image.load('sprites/yellowbird-downflap.png').convert_alpha()
     self.downimg = pygame.transform.rotozoom(self.downimg, 0, SCALE)
-    self.upimg = pygame.image.load('sprites/yellowbird-upflap.png')
+    self.upimg = pygame.image.load('sprites/yellowbird-upflap.png').convert_alpha()
     self.upimg = pygame.transform.rotozoom(self.upimg, 0, SCALE)
 
-    self.rect = pygame.Rect(x, y, self.midimg.get_width(), self.midimg.get_height())
+    self.rect = self.midimg.get_rect(topleft=(self.x, self.y))
 
 
   def jump(self):
@@ -29,12 +30,12 @@ class PlayerBird:
 
   def update(self):
     self.velocity = min(self.velocity + GRAVITY, 10)
-    self.y += self.velocity
+    self.rect.y += self.velocity
 
     if self.velocity < 0:
       self.angle = min(self.angle + 10, 45)
     else:
-      self.angle = max(self.angle - 10, -45)
+      self.angle = max(self.angle - 4, -90)
 
     if self.y < 0:
       self.y = 0
@@ -42,6 +43,12 @@ class PlayerBird:
     if self.y > 800:
       self.y = 800
       self.velocity = 0
+
+    self.x = self.rect.x
+    self.y = self.rect.y
+
+  def collides_with(self, pipe: obstacle.Obstacle):
+    return self.rect.colliderect(pipe.top_rect) or self.rect.colliderect(pipe.bottom_rect)
 
   def draw(self, screen):
     if self.flameCount < 0:
@@ -57,6 +64,12 @@ class PlayerBird:
       draw_bird_img = self.downimg
     elif self.flayImageCount == 2:
       draw_bird_img = self.upimg
+
+    if self.angle < -45:
+      draw_bird_img = self.midimg
+
+    # デバッグ用の当たり判定描画
+    # pygame.draw.rect(screen, (255, 0, 0), self.rect)
 
     draw_bird = pygame.transform.rotate(draw_bird_img, self.angle)
 

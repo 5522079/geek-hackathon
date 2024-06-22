@@ -25,6 +25,9 @@ class Game:
       playerBird.update()
       pipe.update()
 
+      if playerBird.collides_with(pipe):
+        print('Game Over')
+
       # イベント処理
       for event in pygame.event.get():
         # 終了イベント
