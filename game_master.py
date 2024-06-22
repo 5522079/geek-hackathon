@@ -39,6 +39,12 @@ class GameMaster:
       font = pygame.font.Font(None, 50)
       text = font.render('Press Space Key', True, (255, 255, 255))
       screen.blit(text, (150, 500))
+
+
+    # スコアの表示
+    font = pygame.font.Font(None, 50)
+    text = font.render('Score: ' + str(self.score), True, (255, 255, 255))
+    screen.blit(text, (10, 10))
       
 
   def is_game_over(self) -> bool:
