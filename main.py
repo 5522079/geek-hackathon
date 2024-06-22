@@ -1,4 +1,5 @@
 import pygame
+from item import Item
 from player import PlayerBird
 from obstacle import Obstacle
 from background import Background, Ground
@@ -23,6 +24,7 @@ class Game:
 
     playerBird = PlayerBird(100, 250)
     pipe = Obstacle(600, -100)
+    item = Item()
     background = Background()
     ground = Ground()
     fps = pygame.time.Clock()
@@ -40,6 +42,7 @@ class Game:
         pipe.update()
         background.update()
         ground.update()
+        item.update()
       
 
       # ゲームオーバー判定
@@ -67,6 +70,7 @@ class Game:
       # 表示順番重要なので変えないように注意
       background.draw(self.screen)
       playerBird.draw(self.screen)
+      item.draw(self.screen)
       pipe.draw(self.screen)
       ground.draw(self.screen)
       gameMaster.draw(self.screen)
