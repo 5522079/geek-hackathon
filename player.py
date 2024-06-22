@@ -1,5 +1,7 @@
 import pygame
-import obstacle
+from obstacle import Obstacle
+from background import Ground
+from item import Item
 
 SCALE = 1.5
 MOVE_SPEED = 7
@@ -47,8 +49,14 @@ class PlayerBird:
     self.x = self.rect.x
     self.y = self.rect.y
 
-  def collides_with(self, pipe: obstacle.Obstacle):
+  def collides_with_pip(self, pipe: Obstacle):
     return self.rect.colliderect(pipe.top_rect) or self.rect.colliderect(pipe.bottom_rect)
+  
+  def collides_with_ground(self, ground: Ground):
+    return self.rect.colliderect(ground.rect)
+  
+  def collides_with_fish(self, item: Item):
+    return self.rect.colliderect(item.rect)
 
   def draw(self, screen):
     if self.flameCount < 0:
