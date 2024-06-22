@@ -48,7 +48,10 @@ class PlayerBird:
     self.y = self.rect.y
 
   def collides_with_pip(self, pipe: Obstacle):
-    return self.rect.colliderect(pipe.top_rect) or self.rect.colliderect(pipe.bottom_rect)
+    return ((not pipe.hide_top and self.rect.colliderect(pipe.top_rect))
+              or self.rect.colliderect(pipe.bottom_rect) 
+            or (not pipe.hide_top2 and self.rect.colliderect(pipe.top2_rect))
+              or self.rect.colliderect(pipe.bottom2_rect))
   
   def collides_with_ground(self, ground: Ground):
     return self.rect.colliderect(ground.rect)
