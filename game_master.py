@@ -24,6 +24,8 @@ def render_text_with_outline(font, text, text_color, outline_color):
 class GameMaster:
   def __init__(self):
     self.score = 0
+    self.title_img = pygame.image.load('sprites/title.png')
+    self.title_img = pygame.transform.scale(self.title_img, (500, 125))
     self.b_started = False
     self.b_game_over = False
 
@@ -42,11 +44,7 @@ class GameMaster:
 
     if not self.b_started:
       # タイトル表示
-      font = pygame.font.Font("font/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf", 94)
-      font.set_bold(True)
-      text = '走れパステト！'
-      text_surface = render_text_with_outline(font, text, (255, 215, 0), (0, 0, 0))
-      screen.blit(text_surface, (10, 70))
+      screen.blit(self.title_img, (40, 100))
 
       # ゲームスタートの表示
       font = pygame.font.Font(None, 50)
@@ -54,7 +52,7 @@ class GameMaster:
       text_surface = render_text_with_outline(font, text, (255, 255, 255), (0, 0, 0))
       screen.blit(text_surface, (150, 300))
 
-    if self.b_game_over:
+    elif self.b_game_over:
       # ゲームオーバーの表示
       font = pygame.font.Font(None, 50)
       text = 'Game Over'
@@ -73,7 +71,12 @@ class GameMaster:
       text = 'Press Space Key'
       text_surface = render_text_with_outline(font, text, (255, 255, 255), (0, 0, 0))
       screen.blit(text_surface, (150, 500))
-
+    else:
+      # 下にスペースキーでジャンプ！の表示
+      font = pygame.font.Font(None, 50)
+      text = 'Press Space Key to Jump!'
+      text_surface = render_text_with_outline(font, text, (255, 255, 255), (0, 0, 0))
+      screen.blit(text_surface, (70, 750))
 
 
     # スコアの表示

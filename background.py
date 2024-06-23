@@ -9,7 +9,7 @@ class Ground:
     """地面のクラス"""
     def __init__(self):
         self.image = pygame.image.load('sprites/base.png').convert()  # 地面の画像を読み込む
-        self.image = pygame.transform.scale(self.image, (WIDTH+20, 100))  # 地面の画像をウィンドウ幅にスケーリング
+        self.image = pygame.transform.scale(self.image, (WIDTH, 100))  # 地面の画像をウィンドウ幅にスケーリング
         self.rect = self.image.get_rect(bottomleft=(0, HEIGHT))  # 画像の位置を設定
         self.rect2 = self.image.get_rect(bottomleft=(WIDTH, HEIGHT))  # 画像の位置を設定 (2枚目)
 
