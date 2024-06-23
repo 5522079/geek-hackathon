@@ -13,6 +13,7 @@ class Game:
   # ゲームの初期化
   def __init__(self):
     pygame.init()
+    pygame.display.set_caption('走れバステト!')
     self.screen = pygame.display.set_mode((WITH, HEIGHT))
     self.running = True
 

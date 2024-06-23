@@ -71,12 +71,12 @@ class GameMaster:
       text = 'Press Space Key'
       text_surface = render_text_with_outline(font, text, (255, 255, 255), (0, 0, 0))
       screen.blit(text_surface, (150, 500))
-    else:
-      # 下にスペースキーでジャンプ！の表示
-      font = pygame.font.Font(None, 50)
-      text = 'Press Space Key to Jump!'
-      text_surface = render_text_with_outline(font, text, (255, 255, 255), (0, 0, 0))
-      screen.blit(text_surface, (70, 750))
+    # else:
+    #   # 下にスペースキーでジャンプ！の表示
+    #   font = pygame.font.Font(None, 50)
+    #   text = 'Press Space Key to Jump!'
+    #   text_surface = render_text_with_outline(font, text, (255, 255, 255), (0, 0, 0))
+    #   screen.blit(text_surface, (70, 750))
 
 
     # スコアの表示
