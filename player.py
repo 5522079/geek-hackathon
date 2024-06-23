@@ -16,6 +16,8 @@ class PlayerBird:
     self.flayImageCount = 0
     self.flameCount = 0
 
+    self.se = pygame.mixer.Sound('sounds/jump.mp3')
+
     # 画像の読み込み
     self.cat1 = pygame.image.load('sprites/black_cat_1.png').convert_alpha()
     self.cat1 = pygame.transform.rotozoom(self.cat1, 0, SCALE)
@@ -26,6 +28,7 @@ class PlayerBird:
 
 
   def jump(self):
+    self.se.play()
     self.velocity = -10
 
   def update(self):

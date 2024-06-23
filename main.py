@@ -115,7 +115,7 @@ class Game:
   # ゲームの実行
   def run(self):
     pygame.mixer.init(frequency = 44100)    # 初期設定
-    pygame.mixer.music.load("sound\BGM.mp3")     # 音楽ファイルの読み込み
+    pygame.mixer.music.load("sounds\BGM.mp3")     # 音楽ファイルの読み込み
     pygame.mixer.music.set_volume(0.07)        # 音量調整
     pygame.mixer.music.play(-1)              # 音楽の再生回数を指定
 
