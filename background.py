@@ -1,4 +1,5 @@
 import pygame
+from settings import SCROLL_SPEED
 
 # 定数
 WIDTH = 600
@@ -8,16 +9,25 @@ class Ground:
     """地面のクラス"""
     def __init__(self):
         self.image = pygame.image.load('sprites/base.png').convert()  # 地面の画像を読み込む
-        self.image = pygame.transform.scale(self.image, (WIDTH, 100))  # 地面の画像をウィンドウ幅にスケーリング
+        self.image = pygame.transform.scale(self.image, (WIDTH+20, 100))  # 地面の画像をウィンドウ幅にスケーリング
         self.rect = self.image.get_rect(bottomleft=(0, HEIGHT))  # 画像の位置を設定
+        self.rect2 = self.image.get_rect(bottomleft=(WIDTH, HEIGHT))  # 画像の位置を設定 (2枚目)
 
     def update(self):
         """地面の更新"""
-        # self.rect.move_ip(-1, 0)
+        self.rect.move_ip(SCROLL_SPEED, 0)
+        self.rect2.move_ip(SCROLL_SPEED, 0)
+
+        if self.rect.right < 0:
+            self.rect.left = WIDTH-10
+
+        if self.rect2.right < 0:
+            self.rect2.left = WIDTH
 
     def draw(self, screen):
         """地面を描画する"""
         screen.blit(self.image, self.rect.topleft)  # 画像を描画
+        screen.blit(self.image, self.rect2.topleft)
 
 class Background:
     """背景を管理するクラス"""
