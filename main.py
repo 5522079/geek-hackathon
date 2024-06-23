@@ -85,12 +85,16 @@ class Game:
         if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
             if not gameMaster.is_started():
               gameMaster.start()
+              background.reset()
             elif gameMaster.is_game_over():
               gameMaster.retry()
               self.running = False
               retry = True
-            
-            background.reset()
+              background.reset()
+              
+            # ゲームオーバーでない場合
+            elif not gameMaster.is_game_over() and gameMaster.is_started():
+              playerBird.jump()
 
       # 描画処理
       # 表示順番重要なので変えないように注意
