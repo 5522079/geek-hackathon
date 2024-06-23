@@ -41,6 +41,14 @@ class GameMaster:
   def draw(self, screen):
 
     if not self.b_started:
+      # タイトル表示
+      font = pygame.font.Font("font/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf", 94)
+      font.set_bold(True)
+      text = '走れパステト！'
+      text_surface = render_text_with_outline(font, text, (255, 215, 0), (0, 0, 0))
+      screen.blit(text_surface, (10, 70))
+
+      # ゲームスタートの表示
       font = pygame.font.Font(None, 50)
       text = 'Press Space Key'
       text_surface = render_text_with_outline(font, text, (255, 255, 255), (0, 0, 0))

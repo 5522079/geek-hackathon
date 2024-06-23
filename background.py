@@ -18,11 +18,13 @@ class Ground:
         self.rect.move_ip(SCROLL_SPEED, 0)
         self.rect2.move_ip(SCROLL_SPEED, 0)
 
-        if self.rect.right < 0:
-            self.rect.left = WIDTH-10
+        # 1枚目の地面が完全に画面外に出たら、2枚目の地面の右側に配置
+        if self.rect.right <= 0:
+            self.rect.left = self.rect2.right
 
-        if self.rect2.right < 0:
-            self.rect2.left = WIDTH
+        # 2枚目の地面が完全に画面外に出たら、1枚目の地面の右側に配置
+        if self.rect2.right <= 0:
+            self.rect2.left = self.rect.right
 
     def draw(self, screen):
         """地面を描画する"""
