@@ -1,5 +1,7 @@
 import pygame
 
+from file_loader import resource_path
+
 def render_text_with_outline(font, text, text_color, outline_color):
     base_surface = font.render(text, True, text_color)
     width, height = base_surface.get_size()
@@ -24,14 +26,14 @@ def render_text_with_outline(font, text, text_color, outline_color):
 class GameMaster:
   def __init__(self):
     self.score = 0
-    self.title_img = pygame.image.load('sprites/title.png')
+    self.title_img = pygame.image.load(resource_path('sprites/title.png'))
     self.title_img = pygame.transform.scale(self.title_img, (500, 125))
     self.b_started = False
     self.b_game_over = False
 
-    self.coin_se = pygame.mixer.Sound('sounds/coin2.mp3')
+    self.coin_se = pygame.mixer.Sound(resource_path('sounds/coin2.mp3'))
     self.coin_se.set_volume(0.5)
-    self.game_over_se = pygame.mixer.Sound('sounds/game_over.mp3')
+    self.game_over_se = pygame.mixer.Sound(resource_path('sounds/game_over.mp3'))
     self.game_over_se.set_volume(0.5)
 
   def start(self):
