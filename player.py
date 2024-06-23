@@ -17,6 +17,7 @@ class PlayerBird:
     self.flameCount = 0
 
     self.se = pygame.mixer.Sound('sounds/jump.mp3')
+    self.se.set_volume(0.7)
 
     # 画像の読み込み
     self.cat1 = pygame.image.load('sprites/black_cat_1.png').convert_alpha()

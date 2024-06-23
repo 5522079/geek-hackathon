@@ -29,8 +29,10 @@ class GameMaster:
     self.b_started = False
     self.b_game_over = False
 
-    self.se = pygame.mixer.Sound('sounds/coin2.mp3')
-    self.se.set_volume(0.5)
+    self.coin_se = pygame.mixer.Sound('sounds/coin2.mp3')
+    self.coin_se.set_volume(0.5)
+    self.game_over_se = pygame.mixer.Sound('sounds/game_over.mp3')
+    self.game_over_se.set_volume(0.5)
 
   def start(self):
     if self.b_game_over:
@@ -96,8 +98,10 @@ class GameMaster:
     return self.b_started
 
   def add_score(self, score):
-    self.se.play()
+    self.coin_se.play()
     self.score += score
   
   def game_over(self):
+    print('game over')
+    self.game_over_se.play()
     self.b_game_over = True

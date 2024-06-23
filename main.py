@@ -71,7 +71,7 @@ class Game:
         
 
       # ゲームオーバー判定
-      if playerBird.collides_with_pip(pipe) or playerBird.collides_with_ground(ground):
+      if (playerBird.collides_with_pip(pipe) or playerBird.collides_with_ground(ground)) and not gameMaster.is_game_over():
         gameMaster.game_over()
 
       # イベント処理
