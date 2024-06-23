@@ -102,6 +102,5 @@ class GameMaster:
     self.score += score
   
   def game_over(self):
-    print('game over')
     self.game_over_se.play()
     self.b_game_over = True
