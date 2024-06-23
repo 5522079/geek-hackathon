@@ -17,9 +17,9 @@ class PlayerBird:
     self.flameCount = 0
 
     # 画像の読み込み
-    self.cat1 = pygame.image.load('sprites/pink_cat_1.png').convert_alpha()
+    self.cat1 = pygame.image.load('sprites/black_cat_1.png').convert_alpha()
     self.cat1 = pygame.transform.rotozoom(self.cat1, 0, SCALE)
-    self.cat2 = pygame.image.load('sprites/pink_cat_2.png').convert_alpha()
+    self.cat2 = pygame.image.load('sprites/black_cat_2.png').convert_alpha()
     self.cat2 = pygame.transform.rotozoom(self.cat2, 0, SCALE)
 
     self.rect = self.cat1.get_rect(topleft=(self.x, self.y))
