@@ -54,7 +54,7 @@ class PlayerBird:
               or self.rect.colliderect(pipe.bottom2_rect))
   
   def collides_with_ground(self, ground: Ground):
-    return self.rect.colliderect(ground.rect)
+    return self.rect.colliderect(ground.rect) or self.rect.colliderect(ground.rect2)
   
   def collides_with_item(self, item: Item):
     return self.rect.colliderect(item.rect)
