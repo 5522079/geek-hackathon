@@ -12,5 +12,5 @@ pygameを用いて2D横スクロールアクションゲームを作成しまし
 
 ## プレゼンテーション
 実際にプレゼンで使用したスライドの一部です
-![GoogleSlides](https://docs.google.com/presentation/d/1P13XsdKyFk-FG3BxQj-BIybnLhj-IRZi5ww2TiaaPlM/edit?usp=sharing)
+[GoogleSlides](https://docs.google.com/presentation/d/1P13XsdKyFk-FG3BxQj-BIybnLhj-IRZi5ww2TiaaPlM/edit?usp=sharing)
 
